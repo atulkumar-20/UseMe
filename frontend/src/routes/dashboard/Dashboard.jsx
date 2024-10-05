@@ -1,10 +1,12 @@
- import "./Dashboard.css"    
+import "./Dashboard.css";
 const Dashboard = () => {
-         
-  return  <>
-     Dashboard
-    </>
-  
-}
+  return <>
+  <div className="dashboard">
 
-export default Dashboard
+    <div className="texts"></div>
+    <div className="formContainer"></div>
+  </div>
+  </>;
+};
+
+export default Dashboard;
