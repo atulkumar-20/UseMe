@@ -1,8 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-// import App from './App.jsx'
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Home from "./routes/home/Home.jsx";
 import Dashboard from "./routes/dashboard/Dashboard.jsx";
 import Chat from "./routes/chat/Chat.jsx";
@@ -10,6 +10,9 @@ import RootLayout from "./layout/rootLayout/RootLayout.jsx";
 import DashboardLayout from "./layout/dashboardLayout/Dashboard.jsx";
 import SignUp from "./routes/signUp/SignUpPage.jsx";
 import SignIn from "./routes/signIn/SignInPage.jsx";
+
+// Create a client
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -43,8 +46,11 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </StrictMode>
 );
